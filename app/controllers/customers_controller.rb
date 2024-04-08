@@ -1,6 +1,8 @@
 class CustomersController < ApplicationController
+  before_action :set_customer, only: [:edit, :update, :show]
+
   def index
-  
+    @customers = Customer.all
   end
   def new
     @customer = Customer.new
@@ -13,6 +15,29 @@ class CustomersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    
+  end
+
+  def edit
+    
+  end
+
+  def update
+    
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer.id), notice: 'Customer updated Successfully'
+    else
+      render :edit
+    end
+  end
+
+  private
+  
+  def set_customer
+    @customer = Customer.find(params[:id])
   end
 
   def customer_params
