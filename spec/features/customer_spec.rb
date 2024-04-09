@@ -40,13 +40,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'create and show a customer' do 
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S','N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer = create(:customer)
 
     visit(customer_path(customer.id))
     expect(page).to  have_content(customer.name)
@@ -55,34 +49,17 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Testint the index' do 
-    customer1 = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S','N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    #come from factory
+    customer1 = create(:customer)
 
-    customer2 = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S','N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer2 = create(:customer)
 
     visit(customers_path)
     expect(page).to  have_content(customer1.name).and have_content(customer2.name)
   end
 
   scenario 'Update a customer' do 
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S','N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer = create(:customer)
 
     new_name = Faker::Name.name
     visit(edit_customer_path(customer.id))
