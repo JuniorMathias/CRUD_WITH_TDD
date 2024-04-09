@@ -4,12 +4,26 @@
 
 <h1> Customer List </h1>
 
-<ul>
-  <% @customers.each do |customer| %>
-    <li>
-      <%= customer.name%>
-    </li>
-  <%end%>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <td>Name </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name%> </td>
+        <td> <%= link_to "Show", customer_path(customer) %> </td>
+        <td>  <%= link_to "Edit", edit_customer_path(customer) %> </td>
+        <td>  <%= link_to "Delete", customer, method: :delete, data: {confirm: 'Do you really want delete it ?'} %> </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+
 
 <%= link_to 'New Customer', new_customer_path %>
