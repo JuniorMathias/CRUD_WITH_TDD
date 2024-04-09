@@ -7,8 +7,9 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
-gem 'rails-i18n', '~> 5.0.0'
+gem 'rails', '6.0.4'
+gem 'railties', '6.0.4'
+gem 'rails-i18n', '~> 6.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -44,6 +45,8 @@ group :development, :test do
   # gem 'chromedriver-helper'
   gem 'webdrivers', require: false
   gem 'factory_bot_rails', '~> 4.0'
+  gem 'tailwindcss-rails'
+  gem 'rails_live_reload'
 end
 
 group :development do
