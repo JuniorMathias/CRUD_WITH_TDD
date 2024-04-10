@@ -20,7 +20,7 @@ module TddCrud
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
-    config.i18n.default_locale = :'pt-BR'
+    config.i18n.default_locale = :en
     config.assets.css_compressor = nil
 
     # Settings in config/environments/* take precedence over those specified here.

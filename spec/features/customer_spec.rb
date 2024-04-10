@@ -36,7 +36,9 @@ RSpec.feature "Customers", type: :feature do
   scenario 'do not register a customer when the field is blank' do 
     visit(new_customer_path)
     click_on('Register Customer')
-    expect(page).to  have_content("Name não pode ficar em branco")
+    expect(page).to  have_content("Name can't be blank")
+    expect(page).to  have_content("Email can't be blank")
+    expect(page).to  have_content("Phone can't be blank")
   end
 
   scenario 'create and show a customer' do 
